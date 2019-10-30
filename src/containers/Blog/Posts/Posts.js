@@ -1,17 +1,15 @@
 import React, { Component } from "react";
 // import axios from 'axios';
-import axios from "../../axios";
+import axios from "../../../axios";
 
-import Post from "../../components/Post/Post";
-import FullPost from "./FullPost/FullPost";
-import NewPost from "./NewPost/NewPost";
-import "./Blog.css";
+import Post from "../../../components/Post/Post";
+import FullPost from "../FullPost/FullPost";
+import NewPost from "../NewPost/NewPost";
+import "./Posts.css";
 
-class Blog extends Component {
+class Posts extends Component {
   state = {
-    posts: [],
-    selectedPostId: null,
-    error: false
+    posts: []
   };
 
   componentDidMount() {
@@ -29,8 +27,8 @@ class Blog extends Component {
         // console.log( response );
       })
       .catch(error => {
-        // console.log(error);
-        this.setState({ error: true });
+        console.log(error);
+        // this.setState({ error: true });
       });
   }
 
@@ -55,18 +53,6 @@ class Blog extends Component {
 
     return (
       <div>
-        <header className="Blog">
-          <nav>
-            <ul>
-              <li>
-                <a href="/">Home</a>
-              </li>
-              <li>
-                <a href="/new-post">New Post</a>
-              </li>
-            </ul>
-          </nav>
-        </header>
         <section className="Posts">{posts}</section>
         <section>
           <FullPost id={this.state.selectedPostId} />
@@ -79,4 +65,4 @@ class Blog extends Component {
   }
 }
 
-export default Blog;
+export default Posts;
